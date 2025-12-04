@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://crysij7hn8yr6"]
+
+[ext_resource type="PackedScene" uid="uid://dw0prqsyu7he0" path="res://entities/characters/space craft.glb" id="1_psset"]
+[ext_resource type="Texture2D" uid="uid://uirsvxlewwqt" path="res://shared/materials/1.png" id="2_jx2rs"]
+
+[sub_resource type="Skin" id="Skin_enfcl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udod5"]
+albedo_texture = ExtResource("2_jx2rs")
+
+[node name="space craft" instance=ExtResource("1_psset")]
+
+[node name="Cube_003" parent="." index="0"]
+skin = SubResource("Skin_enfcl")
+surface_material_override/0 = SubResource("StandardMaterial3D_udod5")
