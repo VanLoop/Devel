@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var camera := get_viewport().get_camera_3d()
 @onready var left_thrusters = $left_thrusters
 @onready var right_thrusters = $right_thrusters
+var max_distance = 5000.0
 
 func set_thrusters_emitting(group: Node, is_on: bool):
 	for thruster in group.get_children():
@@ -71,6 +72,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	rotate_toward_mouse(delta)
+	
+	# maximum distance lock
+	if global_position.length() > max_distance:
+		global_position = global_position.normalized() * max_distance
 
 	# Rotation (Yaw only)
 	if Input.is_action_pressed("turn_left"):
