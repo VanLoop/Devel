@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=14 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
@@ -38,6 +38,9 @@ emission = Color(0, 0.811765, 0.713726, 1)
 material = SubResource("StandardMaterial3D_aqk2v")
 
 [sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqk2v"]
+font_size = 18
 
 [node name="World" type="Node3D"]
 
@@ -134,3 +137,17 @@ mesh = SubResource("BoxMesh_aqk2v")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.8637, 9, 8)
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="warning_label" type="Label" parent="ui"]
+visible = false
+offset_left = 397.0
+offset_top = 156.0
+offset_right = 762.0
+offset_bottom = 179.0
+text = "Entering High Radiation zone, turn back!"
+label_settings = SubResource("LabelSettings_aqk2v")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
