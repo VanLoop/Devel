@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=10 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://crysij7hn8yr6" path="res://entities/characters/space_ship.tscn" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://bgsyw4foddblv" path="res://camera_rig.gd" id="4_aqk2v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fj7yv"]
 panorama = ExtResource("1_f3sb7")
@@ -19,12 +20,15 @@ adjustment_saturation = 1.3
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_036b0"]
 height = 2.25534
 
+[sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aqk2v")
 
 [node name="ship" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("2_tlwt5")
 
 [node name="space craft" parent="ship" instance=ExtResource("3_tlwt5")]
@@ -34,5 +38,18 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 transform = Transform3D(25.383, 0, 0, 0, 4.35281, 0, 0, 0, 38.8266, 0, 0, 0.641356)
 shape = SubResource("CapsuleShape3D_036b0")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0186498, -0.458052, 0.88873, 0.0987277, 0.883696, 0.45753, -0.99494, 0.096275, 0.0287417, 55.7305, 27.1973, 0)
+[node name="camera_rig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.999994, -0.000982015, -0.00323568, 0.00099046, 0.999996, 0.00261577, 0.00323311, -0.00261895, 0.999991, 16.7081, 9.07657, 0)
+script = ExtResource("4_aqk2v")
+target = NodePath("../ship")
+
+[node name="Arm" type="Node3D" parent="camera_rig"]
+
+[node name="Camera3D" type="Camera3D" parent="camera_rig/Arm"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.53115, 0, 0, 0, 19.3606, 0, 0, 0, 1, 0, 0, 40.2157)
+mesh = SubResource("BoxMesh_aqk2v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 9, 8)
