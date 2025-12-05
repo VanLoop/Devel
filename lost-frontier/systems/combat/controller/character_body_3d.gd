@@ -14,9 +14,16 @@ func rotate_toward_mouse():
 	var hit_pos = plane.intersects_ray(from, to)
 	
 	if hit_pos:
-		var dir = (hit_pos - global_position).normalized()
-		var look_at_pos = global_position + dir
-		look_at(look_at_pos, Vector3.UP)
+		#var dir = (hit_pos - global_position).normalized()
+		#var look_at_pos = global_position + dir
+		#look_at(look_at_pos, Vector3.UP)
+		var dir = (hit_pos - global_position)
+		dir.y = 0
+		dir = dir.normalized()
+		
+		# rotate only around Y-axis
+		var target_rotation = atan2(dir.x, dir.z)
+		rotation.y = target_rotation
 
 func _physics_process(delta):
 	var input_vector = Vector3.ZERO
