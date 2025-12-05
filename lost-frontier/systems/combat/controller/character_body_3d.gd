@@ -37,24 +37,31 @@ func rotate_toward_mouse(delta):
 
 func _physics_process(delta):
 	var input_vector = Vector3.ZERO
+	var left_on = false
+	var right_on = false
 
 	# Move forward/backward
 	if Input.is_action_pressed("move_forward"):
 		input_vector.z -= 1
-		set_thrusters_emitting(left_thrusters, true)
-		set_thrusters_emitting(right_thrusters, true)
-	else:
-		set_thrusters_emitting(left_thrusters, false)
-		set_thrusters_emitting(right_thrusters, false)
+		left_on = true
+		right_on = true
+		
 		
 	if Input.is_action_pressed("move_backward"):
 		input_vector.z += 1
 
 	# Strafe left/right
 	if Input.is_action_pressed("move_left"):
-		input_vector.x -= 1
-	if Input.is_action_pressed("move_right"):
 		input_vector.x += 1
+		right_on = true
+		
+	if Input.is_action_pressed("move_right"):
+		input_vector.x -= 1
+		left_on = true
+		
+	set_thrusters_emitting(left_thrusters, left_on)
+	set_thrusters_emitting(right_thrusters, right_on)
+		
 
 	# Convert input to local space
 	var direction = -transform.basis.z * input_vector.z \
