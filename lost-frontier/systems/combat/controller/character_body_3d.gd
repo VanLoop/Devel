@@ -3,6 +3,12 @@ extends CharacterBody3D
 @export var speed = 15.0
 @export var rotation_speed = 2.5
 @onready var camera := get_viewport().get_camera_3d()
+@onready var left_thrusters = $left_thrusters
+@onready var right_thrusters = $right_thrusters
+
+func set_thrusters_emitting(group: Node, is_on: bool):
+	for thruster in group.get_children():
+		thruster.emitting = is_on
 
 func rotate_toward_mouse(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -35,6 +41,12 @@ func _physics_process(delta):
 	# Move forward/backward
 	if Input.is_action_pressed("move_forward"):
 		input_vector.z -= 1
+		set_thrusters_emitting(left_thrusters, true)
+		set_thrusters_emitting(right_thrusters, true)
+	else:
+		set_thrusters_emitting(left_thrusters, false)
+		set_thrusters_emitting(right_thrusters, false)
+		
 	if Input.is_action_pressed("move_backward"):
 		input_vector.z += 1
 
