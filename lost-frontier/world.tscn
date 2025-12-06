@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=18 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://crysij7hn8yr6" path="res://entities/characters/space_ship.tscn" id="3_tlwt5"]
-[ext_resource type="Script" uid="uid://bgsyw4foddblv" path="res://camera_rig.gd" id="4_aqk2v"]
+[ext_resource type="Script" uid="uid://bgsyw4foddblv" path="res://systems/combat/camera/camera_rig.gd" id="4_aqk2v"]
+[ext_resource type="Script" uid="uid://dmd36tb58jvpl" path="res://asteroid_field.gd" id="5_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://bw5ichlvfxtff" path="res://entities/environment/asteroid/asteroid_a.tscn" id="6_ioo17"]
+[ext_resource type="PackedScene" uid="uid://cnok5j4ko7iq5" path="res://entities/environment/asteroid/asteroid_b.tscn" id="7_wse8f"]
+[ext_resource type="PackedScene" uid="uid://bdxrlwbacs0vh" path="res://entities/environment/asteroid/asteroid_c.tscn" id="8_ic0uy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fj7yv"]
 panorama = ExtResource("1_f3sb7")
@@ -151,3 +155,7 @@ label_settings = SubResource("LabelSettings_aqk2v")
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
+
+[node name="asteroid_field" type="Node3D" parent="."]
+script = ExtResource("5_gbfbk")
+asteroid_scenes = Array[PackedScene]([ExtResource("6_ioo17"), ExtResource("7_wse8f"), ExtResource("8_ic0uy")])

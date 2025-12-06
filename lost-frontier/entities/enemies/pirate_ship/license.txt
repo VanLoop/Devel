@@ -1,0 +1,11 @@
+Model Information:
+* title:	Space_ship
+* source:	https://sketchfab.com/3d-models/space-ship-ee198accef9a418bb3b570ec31f9597c
+* author:	haohao2210 (https://sketchfab.com/haohao2210)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Space_ship" (https://sketchfab.com/3d-models/space-ship-ee198accef9a418bb3b570ec31f9597c) by haohao2210 (https://sketchfab.com/haohao2210) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

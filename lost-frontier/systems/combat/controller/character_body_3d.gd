@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var left_thrusters = $left_thrusters
 @onready var right_thrusters = $right_thrusters
 @onready var warning = get_node("../ui/warning_label")
-var max_distance = 500.0
+var max_distance = 1000.0
 
 
 func set_thrusters_emitting(group: Node, is_on: bool):
