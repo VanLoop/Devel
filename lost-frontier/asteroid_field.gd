@@ -2,7 +2,7 @@ extends Node3D
 
 @export var asteroid_scenes: Array[PackedScene] #array of scenes
 @export var count: int = 20
-@export var field_radius: float = 200.0
+@export var field_radius: float = 300.0
 @export var min_scale: float = 0.001
 @export var max_scale: float = 0.1
 
@@ -34,6 +34,7 @@ func _ready():
 		#random scale
 		var s = randf_range(min_scale, max_scale)
 		asteroid.scale = Vector3(s, s, s)
+		asteroid.mass = s * 10.0
 		
 		add_child(asteroid)
 

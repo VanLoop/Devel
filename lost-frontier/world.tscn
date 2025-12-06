@@ -1,13 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=20 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://crysij7hn8yr6" path="res://entities/characters/space_ship.tscn" id="3_tlwt5"]
 [ext_resource type="Script" uid="uid://bgsyw4foddblv" path="res://systems/combat/camera/camera_rig.gd" id="4_aqk2v"]
 [ext_resource type="Script" uid="uid://dmd36tb58jvpl" path="res://asteroid_field.gd" id="5_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://bw5ichlvfxtff" path="res://entities/environment/asteroid/asteroid_a.tscn" id="6_ioo17"]
-[ext_resource type="PackedScene" uid="uid://cnok5j4ko7iq5" path="res://entities/environment/asteroid/asteroid_b.tscn" id="7_wse8f"]
-[ext_resource type="PackedScene" uid="uid://bdxrlwbacs0vh" path="res://entities/environment/asteroid/asteroid_c.tscn" id="8_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://j67fhqs0hkx7" path="res://asteroid_v_1.tscn" id="6_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://s45erd2volf4" path="res://entities/environment/asteroid/asteroid.obj" id="7_pkg7o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fj7yv"]
 panorama = ExtResource("1_f3sb7")
@@ -41,10 +40,18 @@ emission = Color(0, 0.811765, 0.713726, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_036b0"]
 material = SubResource("StandardMaterial3D_aqk2v")
 
-[sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_aqk2v"]
 font_size = 18
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gbfbk"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gbfbk"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pkg7o"]
+points = PackedVector3Array(95.6361, -106.999, 27.4755, 32.3809, 167.854, 1381.01, 74.7036, 146.68, 1381.22, -219.557, -609.81, 850.368, -642.107, 314.606, 598.311, 600.586, 398.372, 640.509, 536.281, -547.612, 619.728, -179.356, 633.888, 407.085, -115.201, 651.229, 956.097, 386.928, -168.469, 1246.56, -237.835, -353.819, 226.791, -574.609, -252.416, 870.821, 325.842, -505.117, 179.044, 53.0658, -547.074, 1123.17, 576.468, 312.414, 996.617, 553.554, 227.89, 348.927, -261.278, 417.515, 179.9, -531.74, 416.095, 912.223, 667.993, -234.433, 491.731, 159.234, -678.218, 492.113, 115.47, 437.284, 181.238, 327.465, 610.033, 598.126, -404.173, -229.841, 1098.02, -593.714, 144.442, 390.738, 263.554, -632.673, 977.081, -177.737, -106.327, 52.9564, 430.631, 502.064, 976.304, -430.039, 607.664, 682.622, 640.438, -22.4089, 871.26, -72.6211, 333.667, 1311.15, 32.154, -190.47, 1334.03, 158.747, 167.146, 50.0566)
 
 [node name="World" type="Node3D"]
 
@@ -59,7 +66,7 @@ script = ExtResource("2_tlwt5")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ship"]
-transform = Transform3D(25.383, 0, 0, 0, 4.35281, 0, 0, 0, 38.8266, 0, 0, 0.641356)
+transform = Transform3D(25.383, 0, 0, 0, 5.2125, 0, 0, 0, 38.8266, 0, 0, 0.641356)
 shape = SubResource("CapsuleShape3D_036b0")
 
 [node name="left_thrusters" type="Node3D" parent="ship"]
@@ -135,10 +142,6 @@ target = NodePath("../ship")
 
 [node name="Camera3D" type="Camera3D" parent="camera_rig/Arm"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.53115, 0, 0, 0, 19.3606, 0, 0, 0, 1, 0, 0, 40.2157)
-mesh = SubResource("BoxMesh_aqk2v")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.8637, 9, 8)
 
@@ -158,4 +161,31 @@ uppercase = true
 
 [node name="asteroid_field" type="Node3D" parent="."]
 script = ExtResource("5_gbfbk")
-asteroid_scenes = Array[PackedScene]([ExtResource("6_ioo17"), ExtResource("7_wse8f"), ExtResource("8_ic0uy")])
+asteroid_scenes = Array[PackedScene]([ExtResource("6_gbfbk")])
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155054, 0.842545, 40.3758)
+physics_material_override = SubResource("PhysicsMaterial_gbfbk")
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(2.53115, 0, 0, 0, 19.3606, 0, 0, 0, 1, -0.155054, -0.842545, -0.160053)
+shape = SubResource("ConcavePolygonShape3D_gbfbk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.53115, 0, 0, 0, 19.3606, 0, 0, 0, 1, -0.155054, -0.842545, -0.160053)
+mesh = SubResource("BoxMesh_aqk2v")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 16)
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -1.19206, -1.71728, 0)
+shape = SubResource("ConvexPolygonShape3D_pkg7o")
+
+[node name="asteroid" parent="RigidBody3D2" instance=ExtResource("7_pkg7o")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -1.19206, -1.71728, 0)
+
+[editable path="RigidBody3D2/asteroid"]
