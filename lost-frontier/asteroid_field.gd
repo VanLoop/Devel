@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var asteroid_scenes: Array[PackedScene] #array of scenes
-@export var count: int = 20
+@export var count: int = 200
 @export var field_radius: float = 300.0
 @export var min_scale: float = 0.001
 @export var max_scale: float = 0.1

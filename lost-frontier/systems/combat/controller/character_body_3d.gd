@@ -6,8 +6,51 @@ extends CharacterBody3D
 @onready var left_thrusters = $left_thrusters
 @onready var right_thrusters = $right_thrusters
 @onready var warning = get_node("../ui/warning_label")
+@export var bolt_scene: PackedScene
+@export var fire_rate := 0.2
+@export var damage := 15
+
+var can_fire := true
 var max_distance = 1000.0
 
+func fire():
+	if not can_fire: return
+	can_fire = false
+	
+	# create visual bolt
+	var bolt = bolt_scene.instantiate()
+	var bolt1 = bolt_scene.instantiate()
+	bolt.global_transform = $Marker3D.global_transform
+	bolt1.global_transform = $Muzzle.global_transform
+	get_tree().current_scene.add_child(bolt)
+	get_tree().current_scene.add_child(bolt1)
+	
+	# raycast hit direction
+	$RayCast3D.enabled = true
+	var ray = $RayCast3D
+	ray.force_raycast_update()
+	
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		var pos = ray.get_collision_point()
+		var normal = ray.get_collision_normal()
+		
+		if collider.has_method("apply_damage"):
+			collider.apply_damage(damage)
+		
+		#spawn impact effect
+		spawn_hit_effect(pos, normal)
+		
+	#play sound
+	#$AudioStreamPlayer3D.play()
+	
+	#cooldown
+	await get_tree().create_timer(fire_rate).timeout
+	can_fire = true
+	
+func spawn_hit_effect(pos, normal):
+	# hook particle effect here
+	pass
 
 func set_thrusters_emitting(group: Node, is_on: bool):
 	for thruster in group.get_children():
@@ -37,6 +80,9 @@ func rotate_toward_mouse(delta):
 		# rotate only aroun Y smoother
 		var target_yaw = atan2(dir.x, dir.z)
 		rotation.y = lerp_angle(rotation.y, target_yaw, 8.0 * delta)
+#function to fire the ship lasers
+
+
 
 func _physics_process(delta):
 	var input_vector = Vector3.ZERO
@@ -86,7 +132,8 @@ func _physics_process(delta):
 	if global_position.length() > max_distance:
 		global_position = global_position.normalized() * max_distance
 	
-
+	if Input.is_action_pressed("shoot"):
+		fire()
 	# Rotation (Yaw only)
 	if Input.is_action_pressed("turn_left"):
 		rotate_y(-rotation_speed * delta)

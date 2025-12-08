@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b00s4ngtt5ne3"]
+
+[ext_resource type="Script" uid="uid://bbn80uoeghqgf" path="res://blaster_bolt.gd" id="1_fhw0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioo17"]
+albedo_color = Color(0.863436, 5.31845e-06, 7.70092e-07, 1)
+emission_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qjiqh"]
+material = SubResource("StandardMaterial3D_ioo17")
+height = 3.0
+
+[node name="blaster_bolt" type="Node3D"]
+script = ExtResource("1_fhw0n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01881e-09, 0.0632387, 0.470947, 0.572568, -6.79054e-08, 4.13506e-17, 2.5007e-08, 1.55221, -0.019187, 0, 0, 0)
+mesh = SubResource("CylinderMesh_qjiqh")
+
+[node name="Timer" type="Timer" parent="."]
