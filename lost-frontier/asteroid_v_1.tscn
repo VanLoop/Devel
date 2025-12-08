@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://j67fhqs0hkx7"]
+[gd_scene load_steps=4 format=3 uid="uid://j67fhqs0hkx7"]
 
 [ext_resource type="PackedScene" uid="uid://s45erd2volf4" path="res://entities/environment/asteroid/asteroid.obj" id="1_015uv"]
+[ext_resource type="Script" uid="uid://culbia2358alf" path="res://damageable.gd" id="1_omxw3"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_015uv"]
 points = PackedVector3Array(95.6361, -106.999, 27.4755, 32.3809, 167.854, 1381.01, 74.7036, 146.68, 1381.22, -219.557, -609.81, 850.368, -642.107, 314.606, 598.311, 600.586, 398.372, 640.509, 536.281, -547.612, 619.728, -179.356, 633.888, 407.085, -115.201, 651.229, 956.097, 386.928, -168.469, 1246.56, -237.835, -353.819, 226.791, -574.609, -252.416, 870.821, 325.842, -505.117, 179.044, 53.0658, -547.074, 1123.17, 576.468, 312.414, 996.617, 553.554, 227.89, 348.927, -261.278, 417.515, 179.9, -531.74, 416.095, 912.223, 667.993, -234.433, 491.731, 159.234, -678.218, 492.113, 115.47, 437.284, 181.238, 327.465, 610.033, 598.126, -404.173, -229.841, 1098.02, -593.714, 144.442, 390.738, 263.554, -632.673, 977.081, -177.737, -106.327, 52.9564, 430.631, 502.064, 976.304, -430.039, 607.664, 682.622, 640.438, -22.4089, 871.26, -72.6211, 333.667, 1311.15, 32.154, -190.47, 1334.03, 158.747, 167.146, 50.0566)
 
 [node name="asteroid_v1" type="RigidBody3D"]
 gravity_scale = 0.0
+script = ExtResource("1_omxw3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)

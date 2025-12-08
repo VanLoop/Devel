@@ -13,6 +13,11 @@ extends CharacterBody3D
 var can_fire := true
 var max_distance = 1000.0
 
+func play_muzzle_flash():
+	$muzzle_flash.visible = true
+	await get_tree().create_timer(0.05).timeout
+	$muzzle_flash.visible = false
+
 func fire():
 	if not can_fire: return
 	can_fire = false
@@ -22,6 +27,7 @@ func fire():
 	var bolt1 = bolt_scene.instantiate()
 	bolt.global_transform = $Marker3D.global_transform
 	bolt1.global_transform = $Muzzle.global_transform
+	play_muzzle_flash()
 	get_tree().current_scene.add_child(bolt)
 	get_tree().current_scene.add_child(bolt1)
 	
