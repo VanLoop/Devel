@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/pirate_ship.gltf-b41d9e45126866d2e384d89643af
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="CharacterBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=0.1

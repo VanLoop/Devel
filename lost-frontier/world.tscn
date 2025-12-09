@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=27 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dmd36tb58jvpl" path="res://asteroid_field.gd" id="5_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://j67fhqs0hkx7" path="res://asteroid_v_1.tscn" id="6_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://s45erd2volf4" path="res://entities/environment/asteroid/asteroid.obj" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://cpnayka4jsqlp" path="res://pirate_ship1.tscn" id="9_ioo17"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fj7yv"]
 panorama = ExtResource("1_f3sb7")
@@ -85,7 +86,7 @@ points = PackedVector3Array(95.6361, -106.999, 27.4755, 32.3809, 167.854, 1381.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aqk2v")
 
-[node name="ship" type="CharacterBody3D" parent="."]
+[node name="ship" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("2_tlwt5")
 speed = 20.0
@@ -236,5 +237,8 @@ shape = SubResource("ConvexPolygonShape3D_pkg7o")
 
 [node name="asteroid" parent="RigidBody3D2" instance=ExtResource("7_pkg7o")]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -1.19206, -1.71728, 0)
+
+[node name="pirate_ship" parent="." instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.296937, 0, 0.0427628, 0, 0.3, 0, -0.0427628, 0, 0.296937, -6.85795, 0, 60.9)
 
 [editable path="RigidBody3D2/asteroid"]

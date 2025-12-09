@@ -15,6 +15,9 @@ func apply_damage(amount: int):
 		
 func die():
 	#spawn explosion
+	var explosion = preload("res://explosion.tscn").instantiate()
+	explosion.global_transform = global_transform
+	get_parent().add_child(explosion)
 	queue_free()
 
 

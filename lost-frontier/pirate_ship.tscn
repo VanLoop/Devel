@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw23cejnrlu8k"]
+
+[ext_resource type="PackedScene" uid="uid://dxattk3nymu3" path="res://entities/enemies/pirate_ship/pirate_ship.gltf" id="1_ydudr"]
+[ext_resource type="Script" uid="uid://rbcp2dsve6cq" path="res://pirate_ship.gd" id="2_wrv12"]
+[ext_resource type="PackedScene" uid="uid://b00s4ngtt5ne3" path="res://blaster_bolt.tscn" id="3_wrv12"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dk0j"]
+radius = 1.07222
+height = 2.59276
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ce61"]
+
+[node name="pirate_ship" instance=ExtResource("1_ydudr")]
+transform = Transform3D(0.00648163, 0, -0.29993, 0, 0.3, 0, 0.29993, 0, 0.00648163, 0, 0, 0)
+script = ExtResource("2_wrv12")
+bolt_scene = ExtResource("3_wrv12")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(23.2335, 0, 0, 0, 8.30876, 0, 0, 0, 10.0759, -18.9371, -1.39401, 1.70605)
+shape = SubResource("CapsuleShape3D_5dk0j")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+transform = Transform3D(168.159, 0, 0, 0, 141.424, 0, 0, 0, 149.06, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_5ce61")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="3"]
+transform = Transform3D(-0.0185693, 0, -0.999828, 0, 1, 0, 0.999828, 0, -0.0185693, 4.65661e-10, 0, -0.245457)
+target_position = Vector3(0, -1, -1000)
+
+[node name="Marker3D" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.652224, 2.0417, -1.59292, -2.07694)
+
+[node name="Marker3D2" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.652224, 2.0417, -3.89353, -2.07694)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
