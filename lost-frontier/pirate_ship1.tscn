@@ -10,11 +10,15 @@ height = 2.59276
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ce61"]
 
 [node name="pirate_ship" instance=ExtResource("1_l3vy3")]
-transform = Transform3D(0.00648163, 0, -0.29993, 0, 0.3, 0, 0.29993, 0, 0.00648163, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+motion_mode = 1
 script = ExtResource("2_u4lsk")
 
+[node name="Morena smuggler ship_obj_cleaner_materialmerger_gles" parent="Sketchfab_model" index="0"]
+transform = Transform3D(-0.0175745, 0.999846, -2.2201e-16, -0.999846, -0.0175745, 2.25947e-16, 2.2201e-16, 2.25947e-16, 1, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(23.2335, 0, 0, 0, 8.30876, 0, 0, 0, 10.0759, -18.9371, -1.39401, 1.70605)
+transform = Transform3D(1.69713, 0, -10.049, 0, 8.30876, 0, 23.1714, 0, 0.73601, -1.14838, -1.39401, -17.6803)
 shape = SubResource("CapsuleShape3D_5dk0j")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
@@ -24,7 +28,7 @@ transform = Transform3D(168.159, 0, 0, 0, 141.424, 0, 0, 0, 149.06, 0, 0, 0)
 shape = SubResource("BoxShape3D_5ce61")
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="3"]
-transform = Transform3D(-0.0185693, 0, -0.999828, 0, 1, 0, 0.999828, 0, -0.0185693, 4.65661e-10, 0, -0.245457)
+transform = Transform3D(-0.999491, 0, -0.0318992, 0, 1, 0, 0.0318992, 0, -0.999491, -0.379008, 0, 0)
 target_position = Vector3(0, -1, -1000)
 
 [node name="Marker3D" type="Marker3D" parent="." index="4"]

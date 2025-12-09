@@ -239,6 +239,6 @@ shape = SubResource("ConvexPolygonShape3D_pkg7o")
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -1.19206, -1.71728, 0)
 
 [node name="pirate_ship" parent="." instance=ExtResource("9_ioo17")]
-transform = Transform3D(0.296937, 0, 0.0427628, 0, 0.3, 0, -0.0427628, 0, 0.296937, -6.85795, 0, 60.9)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 19.0755, 0, 66.4202)
 
 [editable path="RigidBody3D2/asteroid"]

@@ -24,14 +24,25 @@ func _physics_process(delta: float) -> void:
 	dir = dir.normalized()
 	
 	#rotate toward player
-	look_at(player.global_transform.origin, Vector3.UP)
+	face_player()
+	#look_at(player.global_transform.origin, Vector3.UP)
+	
 	
 	#move towards player
 	velocity = dir * move_speed
+	
+	# update RayCast to point at the player ship
+	
+	
 	move_and_slide()
 	
 	#called when player enters the detection range
+func face_player():
+	var to_player = player.global_transform.origin - global_transform.origin
+	to_player.y = 0
 	
+	if to_player.length() > 0.001:
+		look_at(global_transform.origin + to_player, Vector3.UP, true)
 
 
 
