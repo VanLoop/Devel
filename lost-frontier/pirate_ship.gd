@@ -7,8 +7,55 @@ extends CharacterBody3D
 @export var detection_range := 50.0
 @export var bolt_scene: PackedScene
 @export var damage := 10
+@export var health := 20
 @export var fire_rate := 0.2
+@onready var raycast := $RayCast3D
+@onready var muzzle := $muzzle
+@onready var muzzle2 := $muzzle2
 var chasing := false
+var can_fire := true
+
+func fire():
+	if not can_fire:
+		return
+	if player == null:
+		return
+		
+	#check if player is in range
+	var dist = global_position.distance_to(player.global_position)
+	if dist > fire_range:
+		return
+		
+	can_fire = false
+	
+	# spqn visual bolt
+	var bolt = bolt_scene.instantiate()
+	bolt.global_transform = muzzle.global_transform
+	get_tree().current_scene.add_child(bolt)
+	
+	# raycast hit
+	raycast.enable = true
+	raycast.force_raycast_update()
+	
+	# ray collision
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider and collider.is_in_group("player"):
+			if collider.has_method("apply_damage"):
+				collider.apply_damage(damage)
+				
+func apply_damage(amount: int):
+	health -= amount
+	print(name," took: ", amount, " damage. Remaining: ", health)
+	if health <= 0:
+		die()
+		
+func die():
+	#spawn explosion
+	var explosion = preload("res://explosion.tscn").instantiate()
+	explosion.global_transform = global_transform
+	get_parent().add_child(explosion)
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	if not chasing or player == null:

@@ -13,6 +13,7 @@ height = 2.59276
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 motion_mode = 1
 script = ExtResource("2_u4lsk")
+health = 50
 
 [node name="Morena smuggler ship_obj_cleaner_materialmerger_gles" parent="Sketchfab_model" index="0"]
 transform = Transform3D(-0.0175745, 0.999846, -2.2201e-16, -0.999846, -0.0175745, 2.25947e-16, 2.2201e-16, 2.25947e-16, 1, 0, 0, 0)
@@ -31,10 +32,10 @@ shape = SubResource("BoxShape3D_5ce61")
 transform = Transform3D(-0.999491, 0, -0.0318992, 0, 1, 0, 0.0318992, 0, -0.999491, -0.379008, 0, 0)
 target_position = Vector3(0, -1, -1000)
 
-[node name="Marker3D" type="Marker3D" parent="." index="4"]
+[node name="muzzle" type="Marker3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.652224, 2.0417, -1.59292, -2.07694)
 
-[node name="Marker3D2" type="Marker3D" parent="." index="5"]
+[node name="muzzle2" type="Marker3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.652224, 2.0417, -3.89353, -2.07694)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
