@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=29 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bau0hqetvc0cw" path="res://score.gd" id="6_wse8f"]
 [ext_resource type="PackedScene" uid="uid://s45erd2volf4" path="res://entities/environment/asteroid/asteroid.obj" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://cpnayka4jsqlp" path="res://pirate_ship1.tscn" id="9_ioo17"]
+[ext_resource type="Script" uid="uid://by8eq1xjk2hhc" path="res://enemy_spawner.gd" id="11_ic0uy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fj7yv"]
 panorama = ExtResource("1_f3sb7")
@@ -246,5 +247,9 @@ transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -1.19206, -1.7172
 
 [node name="pirate_ship" parent="." instance=ExtResource("9_ioo17")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 17.5758, 0, 60.7219)
+
+[node name="enemy_spawner" type="Node3D" parent="."]
+script = ExtResource("11_ic0uy")
+enemy_scene = ExtResource("9_ioo17")
 
 [editable path="RigidBody3D2/asteroid"]
