@@ -18,6 +18,7 @@ func die():
 	var explosion = preload("res://explosion.tscn").instantiate()
 	explosion.global_transform = global_transform
 	get_parent().add_child(explosion)
+	ScoreManager.add_points(10)
 	queue_free()
 
 

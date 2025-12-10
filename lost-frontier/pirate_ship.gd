@@ -34,7 +34,7 @@ func fire():
 	get_tree().current_scene.add_child(bolt)
 	
 	# raycast hit
-	raycast.enable = true
+	raycast.enabled = true
 	raycast.force_raycast_update()
 	
 	# ray collision
@@ -43,6 +43,9 @@ func fire():
 		if collider and collider.is_in_group("player"):
 			if collider.has_method("apply_damage"):
 				collider.apply_damage(damage)
+				
+	await get_tree().create_timer(fire_rate).timeout
+	can_fire = true
 				
 func apply_damage(amount: int):
 	health -= amount
@@ -55,6 +58,7 @@ func die():
 	var explosion = preload("res://explosion.tscn").instantiate()
 	explosion.global_transform = global_transform
 	get_parent().add_child(explosion)
+	ScoreManager.add_points(50)
 	queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -62,6 +66,8 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
+	else:
+		fire()
 		
 	#get direction toward player
 	var dir = (player.global_transform.origin - global_transform.origin)
@@ -82,6 +88,8 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
+	fire()
+	
 	
 	#called when player enters the detection range
 func face_player():

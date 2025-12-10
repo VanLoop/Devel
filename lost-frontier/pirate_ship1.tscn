@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpnayka4jsqlp"]
+[gd_scene load_steps=6 format=3 uid="uid://cpnayka4jsqlp"]
 
 [ext_resource type="PackedScene" uid="uid://dxattk3nymu3" path="res://entities/enemies/pirate_ship/pirate_ship.gltf" id="1_l3vy3"]
 [ext_resource type="Script" uid="uid://rbcp2dsve6cq" path="res://pirate_ship.gd" id="2_u4lsk"]
+[ext_resource type="PackedScene" uid="uid://b00s4ngtt5ne3" path="res://blaster_bolt.tscn" id="3_l3vy3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dk0j"]
 radius = 1.07222
@@ -13,6 +14,7 @@ height = 2.59276
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 motion_mode = 1
 script = ExtResource("2_u4lsk")
+bolt_scene = ExtResource("3_l3vy3")
 health = 50
 
 [node name="Morena smuggler ship_obj_cleaner_materialmerger_gles" parent="Sketchfab_model" index="0"]

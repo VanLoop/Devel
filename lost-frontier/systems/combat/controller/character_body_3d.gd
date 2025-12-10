@@ -9,9 +9,24 @@ extends CharacterBody3D
 @export var bolt_scene: PackedScene
 @export var fire_rate := 0.2
 @export var damage := 15
+@export var max_health: int = 50
+var health: int
 
 var can_fire := true
 var max_distance = 1000.0
+
+func apply_damage(amount: int):
+	health -= amount
+	print(name," took: ", amount, " damage. Remaining: ", health)
+	if health <= 0:
+		die()
+		
+func die():
+	#spawn explosion
+	var explosion = preload("res://explosion.tscn").instantiate()
+	explosion.global_transform = global_transform
+	get_parent().add_child(explosion)
+	queue_free()
 
 func play_muzzle_flash():
 	$muzzle_flash.visible = true
@@ -88,6 +103,8 @@ func rotate_toward_mouse(delta):
 		rotation.y = lerp_angle(rotation.y, target_yaw, 8.0 * delta)
 #function to fire the ship lasers
 
+func _ready() -> void:
+	health = max_health
 
 
 func _physics_process(delta):
