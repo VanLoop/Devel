@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://dha885tvjm2vi"]
+[gd_scene load_steps=30 format=3 uid="uid://dha885tvjm2vi"]
 
 [ext_resource type="Texture2D" uid="uid://b2fpnqluwognn" path="res://addons/SpacePanoramas/panorama6.jpg" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://b8rdjfbho4nj8" path="res://world.gd" id="1_k3n1d"]
 [ext_resource type="Script" uid="uid://b7relrk2353ej" path="res://systems/combat/controller/character_body_3d.gd" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://b00s4ngtt5ne3" path="res://blaster_bolt.tscn" id="3_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://crysij7hn8yr6" path="res://entities/characters/space_ship.tscn" id="3_tlwt5"]
@@ -84,6 +85,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 points = PackedVector3Array(95.6361, -106.999, 27.4755, 32.3809, 167.854, 1381.01, 74.7036, 146.68, 1381.22, -219.557, -609.81, 850.368, -642.107, 314.606, 598.311, 600.586, 398.372, 640.509, 536.281, -547.612, 619.728, -179.356, 633.888, 407.085, -115.201, 651.229, 956.097, 386.928, -168.469, 1246.56, -237.835, -353.819, 226.791, -574.609, -252.416, 870.821, 325.842, -505.117, 179.044, 53.0658, -547.074, 1123.17, 576.468, 312.414, 996.617, 553.554, 227.89, 348.927, -261.278, 417.515, 179.9, -531.74, 416.095, 912.223, 667.993, -234.433, 491.731, 159.234, -678.218, 492.113, 115.47, 437.284, 181.238, 327.465, 610.033, 598.126, -404.173, -229.841, 1098.02, -593.714, 144.442, 390.738, 263.554, -632.673, 977.081, -177.737, -106.327, 52.9564, 430.631, 502.064, 976.304, -430.039, 607.664, 682.622, 640.438, -22.4089, 871.26, -72.6211, 333.667, 1311.15, 32.154, -190.47, 1334.03, 158.747, 167.146, 50.0566)
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_k3n1d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aqk2v")
@@ -215,6 +217,16 @@ uppercase = true
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("6_wse8f")
+
+[node name="win_label" type="Label" parent="ui"]
+offset_left = 388.0
+offset_top = 117.0
+offset_right = 460.0
+offset_bottom = 140.0
+scale = Vector2(6.16, 2.76)
+text = "You Win !"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="asteroid_field" type="Node3D" parent="."]
 script = ExtResource("5_gbfbk")
