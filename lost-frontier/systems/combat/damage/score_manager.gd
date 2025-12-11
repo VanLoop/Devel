@@ -6,7 +6,7 @@ signal win
 func add_points(points: int):
 	score += points
 	print("Score: ", score)
-	if score >= 100:
+	if score >= 60:
 		emit_signal("win")
 
 # Called when the node enters the scene tree for the first time.

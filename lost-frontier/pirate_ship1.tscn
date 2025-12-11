@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpnayka4jsqlp"]
+[gd_scene load_steps=7 format=3 uid="uid://cpnayka4jsqlp"]
 
 [ext_resource type="PackedScene" uid="uid://dxattk3nymu3" path="res://entities/enemies/pirate_ship/pirate_ship.gltf" id="1_l3vy3"]
 [ext_resource type="Script" uid="uid://rbcp2dsve6cq" path="res://pirate_ship.gd" id="2_u4lsk"]
 [ext_resource type="PackedScene" uid="uid://b00s4ngtt5ne3" path="res://blaster_bolt.tscn" id="3_l3vy3"]
+[ext_resource type="AudioStream" uid="uid://wkp51u2sab5v" path="res://laser-312360.mp3" id="4_u4lsk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dk0j"]
 radius = 1.07222
@@ -25,7 +26,7 @@ transform = Transform3D(1.69713, 0, -10.049, 0, 8.30876, 0, 23.1714, 0, 0.73601,
 shape = SubResource("CapsuleShape3D_5dk0j")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
-transform = Transform3D(168.159, 0, 0, 0, 141.424, 0, 0, 0, 149.06, 0, 0, 0)
+transform = Transform3D(388.76373, 0, 0, 0, 141.42398, 0, 0, 0, 432.84088, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_5ce61")
@@ -39,6 +40,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.652224, 2.0417, -1.59292, -2.0
 
 [node name="muzzle2" type="Marker3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.652224, 2.0417, -3.89353, -2.07694)
+
+[node name="shoot" type="AudioStreamPlayer3D" parent="." index="6"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+stream = ExtResource("4_u4lsk")
+volume_db = 18.641
+max_polyphony = 32
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

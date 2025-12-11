@@ -2,7 +2,7 @@ extends Node3D
 
 @export var target: Node3D
 @export var follow_speed := 5.0
-@export var arm_offset := Vector3(12, 15, -12)
+@export var arm_offset := Vector3(12, 19, -12)
 
 
 # Called when the node enters the scene tree for the first time.

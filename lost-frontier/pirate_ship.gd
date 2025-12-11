@@ -12,6 +12,7 @@ extends CharacterBody3D
 @onready var raycast := $RayCast3D
 @onready var muzzle := $muzzle
 @onready var muzzle2 := $muzzle2
+@onready var shoot := $shoot
 var chasing := false
 var can_fire := true
 
@@ -31,6 +32,7 @@ func fire():
 	# spqn visual bolt
 	var bolt = bolt_scene.instantiate()
 	bolt.global_transform = muzzle.global_transform
+	shoot.play()
 	get_tree().current_scene.add_child(bolt)
 	
 	# raycast hit

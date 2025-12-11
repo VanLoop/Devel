@@ -10,10 +10,11 @@ extends CharacterBody3D
 @export var fire_rate := 0.2
 @export var damage := 15
 @export var max_health: int = 50
+@onready var shoot = $shoot
 var health: int
 
 var can_fire := true
-var max_distance = 1000.0
+var max_distance = 5000.0
 
 func apply_damage(amount: int):
 	health -= amount
@@ -43,6 +44,7 @@ func fire():
 	bolt.global_transform = $Marker3D.global_transform
 	bolt1.global_transform = $Muzzle.global_transform
 	play_muzzle_flash()
+	shoot.play()
 	get_tree().current_scene.add_child(bolt)
 	get_tree().current_scene.add_child(bolt1)
 	
@@ -61,6 +63,7 @@ func fire():
 		
 		#spawn impact effect
 		spawn_hit_effect(pos, normal)
+		
 		
 	#play sound
 	#$AudioStreamPlayer3D.play()
